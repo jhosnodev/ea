@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es" class="scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -7,10 +7,10 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <title>Amanda Escalona — Content & Marketing Operations Specialist</title>
-<meta name="description" content="Freelancer venezolana basada en Colombia. Especialista bilingüe en contenido y operaciones de marketing — copywriting, community y coordinación de proyectos. ES nativo / EN C2." />
+<meta name="description" content="Venezuelan freelancer based in Colombia. Bilingual Content & Marketing Operations specialist — copywriting, community management and project coordination. Native ES / EN C2." />
 
 <meta property="og:title" content="Amanda Escalona — Content & Marketing Operations" />
-<meta property="og:description" content="Freelancervenezolana en Colombia. Copy, community y coordinación de proyectos. Bilingüe ES/EN. 6+ años." />
+<meta property="og:description" content="Venezuelan freelancer in Colombia. Copy, community and project coordination. Bilingual ES/EN. 6+ years." />
 <meta property="og:type" content="website" />
 
 <!-- Tailwind CDN — utilidades disponibles globalmente -->
@@ -435,12 +435,12 @@
 // Auto-detectar idioma del navegador (solo primera vez)
 (function() {
   var savedLang = localStorage.getItem('preferred_lang');
-  if (savedLang === 'en') return;
+  if (savedLang === 'es') return;
   var lang = navigator.language || navigator.userLanguage;
-  if (lang && lang.toLowerCase().startsWith('en') && !sessionStorage.getItem('lang_redirect')) {
-    localStorage.setItem('preferred_lang', 'en');
+  if (lang && lang.toLowerCase().startsWith('es') && !sessionStorage.getItem('lang_redirect')) {
+    localStorage.setItem('preferred_lang', 'es');
     sessionStorage.setItem('lang_redirect', '1');
-    window.location.href = '/en/';
+    window.location.href = '/';
   }
 })();
 </script>
@@ -464,12 +464,12 @@
 
     <!-- Links desktop -->
     <div class="hidden lg:flex gap-9 text-[0.78rem] tracking-[0.16em] uppercase text-mist-soft">
-      <a class="nav__link relative transition-colors duration-300 hover:text-mist" href="#trabajo">Trabajo</a>
-      <a class="nav__link relative transition-colors duration-300 hover:text-mist" href="#sobre">Sobre</a>
-      <a class="nav__link relative transition-colors duration-300 hover:text-mist" href="#contacto">Contacto</a>
+      <a class="nav__link relative transition-colors duration-300 hover:text-mist" href="#trabajo">Work</a>
+      <a class="nav__link relative transition-colors duration-300 hover:text-mist" href="#sobre">About</a>
+      <a class="nav__link relative transition-colors duration-300 hover:text-mist" href="#contacto">Contact</a>
     </div>
 
-    <a href="/en/" onclick="localStorage.setItem('preferred_lang', 'en')" class="text-[0.75rem]" style="color:#E6FCFA;text-decoration:none;padding:4px 8px;border:1px solid rgba(230,252,250,0.14);border-radius:4px;">EN</a>
+    <a href="/" onclick="localStorage.setItem('preferred_lang', 'es')" id="lang-toggle" class="text-[0.75rem]" style="color:#E6FCFA;text-decoration:none;padding:4px 8px;border:1px solid rgba(230,252,250,0.14);border-radius:4px;">ES</a>
 
     <!-- Botón hamburguesa, solo mobile -->
     <button class="nav__burger lg:hidden w-10 h-10 rounded-full border border-rule bg-transparent cursor-pointer relative p-0 flex-shrink-0 transition hover:border-teal hover:bg-teal/10" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
@@ -493,24 +493,24 @@
     <div class="font-display text-mist text-2xl mb-2">Amanda Escalona</div>
     <div class="font-script italic text-teal/50 text-sm tracking-[0.4em] mb-10">☾ ✦ ☾</div>
 
-    <nav class="flex flex-col mb-10" aria-label="Secciones del sitio">
+    <nav class="flex flex-col mb-10" aria-label="Site sections">
       <a class="mobile-menu__link font-display text-mist text-[clamp(2.2rem,10vw,3.2rem)] py-4 border-y border-rule -mb-px leading-none tracking-tight transition-all duration-300 hover:text-teal hover:pl-2" href="#">
         <span class="font-script italic text-teal text-[0.65em] align-super mr-2 opacity-70">00</span>Home
       </a>
       <a class="mobile-menu__link font-display text-mist text-[clamp(2.2rem,10vw,3.2rem)] py-4 border-b border-rule leading-none tracking-tight transition-all duration-300 hover:text-teal hover:pl-2" href="#trabajo">
-        <span class="font-script italic text-teal text-[0.65em] align-super mr-2 opacity-70">01</span>Trabajo
+        <span class="font-script italic text-teal text-[0.65em] align-super mr-2 opacity-70">01</span>Work
       </a>
       <a class="mobile-menu__link font-display text-mist text-[clamp(2.2rem,10vw,3.2rem)] py-4 border-b border-rule leading-none tracking-tight transition-all duration-300 hover:text-teal hover:pl-2" href="#sobre">
-        <span class="font-script italic text-teal text-[0.65em] align-super mr-2 opacity-70">02</span>Sobre
+        <span class="font-script italic text-teal text-[0.65em] align-super mr-2 opacity-70">02</span>About
       </a>
       <a class="mobile-menu__link font-display text-mist text-[clamp(2.2rem,10vw,3.2rem)] py-4 border-b border-rule leading-none tracking-tight transition-all duration-300 hover:text-teal hover:pl-2" href="#contacto">
-        <span class="font-script italic text-teal text-[0.65em] align-super mr-2 opacity-70">03</span>Contacto
+        <span class="font-script italic text-teal text-[0.65em] align-super mr-2 opacity-70">03</span>Contact
       </a>
     </nav>
 
     <a class="mobile-menu__cta inline-flex items-center justify-center gap-3 px-6 py-4 mb-6 rounded-full border border-available/45 bg-gradient-to-b from-available/15 to-available/5 text-mist text-sm font-medium tracking-wide transition hover:border-available/70 hover:from-available/25 hover:to-available/10" href="#contacto">
       <span class="pulse-dot relative w-2 h-2 rounded-full bg-available" aria-hidden="true"></span>
-      Open to work — Hablemos
+      Open to work — Let's talk
     </a>
 
     <div class="font-script italic text-mist-mute text-xs tracking-wider">amandaescalona.com · MMXXVI</div>
@@ -719,18 +719,18 @@
 <header class="hero relative min-h-screen pt-28 md:pt-36 pb-12 md:pb-20 px-5 sm:px-8 lg:px-12 max-w-wrap mx-auto flex flex-col justify-between z-[2]">
 
   <div class="hero__meta rise rise-1 flex flex-col md:flex-row gap-2 md:gap-0 justify-between text-mist-mute uppercase text-[0.78rem] tracking-[0.16em] mb-7 md:mb-10">
-    <span>Venezolana · Nómada en Colombia · ES + EN</span>
-    <span class="text-teal">Portafolio MMXXVI</span>
+    <span>Venezuelan · Nomad in Colombia · ES + EN</span>
+    <span class="text-teal">Portfolio MMXXVI</span>
   </div>
 
   <h1 class="hero__title rise rise-2 title-star font-display text-[clamp(2.8rem,9.5vw,9rem)] leading-[0.92] tracking-[-0.025em] max-w-[14ch] relative">
-    Contenido que <em class="font-script italic gradient-text-em not-italic"><span class="italic">convierte</span></em>,<br/>
-    procesos que <em class="font-script italic gradient-text-em not-italic"><span class="italic">entregan</span></em>
+    Content that <em class="font-script italic gradient-text-em not-italic"><span class="italic">converts</span></em>,<br/>
+    processes that <em class="font-script italic gradient-text-em not-italic"><span class="italic">deliver</span></em>
   </h1>
 
   <div class="hero__bottom grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-end mt-10 md:mt-20">
     <p class="hero-lead editorial-strong editorial-strong--lg rise rise-3 text-[clamp(1.1rem,1.4vw,1.4rem)] leading-[1.5] max-w-[42ch] text-mist-soft font-light">
-      Soy <strong>Content & Marketing Operations Specialist</strong>. Freelancer venezolana, nómada digital basada en Colombia. Ayudo a equipos de marketing y founders a entregar campañas completas — no solo textos sueltos. Copy, community y coordinación de proyectos, en español e inglés.
+      I'm a <strong>Content & Marketing Operations Specialist</strong>. Venezuelan freelancer, digital nomad based in Colombia. I help marketing teams and founders deliver complete campaigns — not just loose copy. Copy, community and project coordination, in Spanish and English.
     </p>
     <div class="rise rise-4 flex flex-wrap gap-2">
       <span class="px-3 py-2 rounded-full border border-rule text-[0.78rem] tracking-wider text-mist-soft bg-mist/[0.02] transition-all duration-300 hover:bg-teal hover:border-teal hover:text-mist hover:shadow-[0_0_20px_rgba(53,115,118,0.35)]">Copywriting</span>
@@ -750,14 +750,14 @@
     <span>Email sequences</span>
     <span>Community management</span>
     <span>Landing pages</span>
-    <span>Brief & cronograma</span>
-    <span>Bilingüe ES/EN</span>
+    <span>Brief & schedule</span>
+    <span>Bilingual ES/EN</span>
     <span>Copywriting B2B</span>
     <span>Email sequences</span>
     <span>Community management</span>
     <span>Landing pages</span>
-    <span>Brief & cronograma</span>
-    <span>Bilingüe ES/EN</span>
+    <span>Brief & schedule</span>
+    <span>Bilingual ES/EN</span>
   </div>
 </div>
 
@@ -765,35 +765,50 @@
 <section class="py-20 md:py-32 relative z-[2] bg-gradient-to-b from-transparent via-midnight/[0.18] to-transparent" id="servicios">
   <div class="max-w-wrap mx-auto px-5 sm:px-8 lg:px-12">
     <div class="reveal grid grid-cols-1 md:grid-cols-[100px_1fr] gap-4 md:gap-8 mb-10 md:mb-20 items-start">
-      <div class="font-script italic text-teal pt-2 text-[1.3rem] tracking-wide">§ 01 — Servicios</div>
+      <div class="font-script italic text-teal pt-2 text-[1.3rem] tracking-wide">§ 01 — Services</div>
       <h2 class="font-display text-[clamp(2rem,5vw,4.4rem)] leading-none tracking-tight">
-        Dos <span class="font-script italic">brazos</span>, un solo perfil.
+        Two <span class="font-script italic">arms</span>, one profile.
       </h2>
     </div>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-2 border-y border-rule">
     <div class="reveal p-10 md:p-16 lg:border-r border-b lg:border-b-0 border-rule transition-colors duration-500 hover:bg-teal/[0.06]">
-      <div class="uppercase text-[0.78rem] tracking-[0.16em] text-teal mb-6 md:mb-8 flex items-center gap-3 before:content-[''] before:w-7 before:h-px before:bg-teal">Carril A · Contenido</div>
-      <h3 class="font-display text-[clamp(1.65rem,3vw,2.8rem)] mb-3">Copy & Comunicación</h3>
+      <div class="uppercase text-[0.78rem] tracking-[0.16em] text-teal mb-6 md:mb-8 flex items-center gap-3 before:content-[''] before:w-7 before:h-px before:bg-teal">Lane A · Content</div>
+      <h3 class="font-display text-[clamp(1.65rem,3vw,2.8rem)] mb-3">Copy & Communication</h3>
       <p class="text-mist-soft mb-6 max-w-[42ch] font-light leading-relaxed">
-        Redacción persuasiva con foco en conversión y construcción de comunidad. La parte que se ve.
+        Persuasive copy focused on conversion and community building.
       </p>
-      <ul class="lane-list flex flex-col gap-2.5 list-none text-mist-soft text-[0.96rem] font-light">
-        <li>Copywriting de landing pages y sales pages</li>
-        <li>Secuencias de email marketing y newsletters</li>
-        <li>Community management y calendarios editoriales</li>
-        <li>Guiones para reels, ads y contenido orgánico</li>
-        <li>Ebooks, lead magnets y blog SEO</li>
-        <li>Brand voice & guías editoriales</li>
+<ul class="lane-list flex flex-col gap-2.5 list-none text-mist-soft text-[0.96rem] font-light">
+        <li>Landing page and sales page copywriting</li>
+        <li>Email marketing sequences and newsletters</li>
+        <li>Community management and editorial calendars</li>
+        <li>Scripts for reels, ads and organic content</li>
+        <li>Ebooks, lead magnets and SEO blog</li>
+        <li>Brand voice and editorial guides</li>
       </ul>
     </div>
 
     <div class="reveal p-10 md:p-16 transition-colors duration-500 hover:bg-teal/[0.06]">
-      <div class="uppercase text-[0.78rem] tracking-[0.16em] text-teal mb-6 md:mb-8 flex items-center gap-3 before:content-[''] before:w-7 before:h-px before:bg-teal">Carril B · Operaciones</div>
-      <h3 class="font-display text-[clamp(1.65rem,3vw,2.8rem)] mb-3">Marketing Ops & Coordinación</h3>
+      <div class="uppercase text-[0.78rem] tracking-[0.16em] text-teal mb-6 md:mb-8 flex items-center gap-3 before:content-[''] before:w-7 before:h-px before:bg-teal">Lane B · Operations</div>
+      <h3 class="font-display text-[clamp(1.65rem,3vw,2.8rem)] mb-3">Marketing Ops</h3>
       <p class="text-mist-soft mb-6 max-w-[42ch] font-light leading-relaxed">
-        El cómo se entrega. Briefs, cronogramas, coordinación de freelancers, seguimiento de campañas.
+        The how it gets delivered. Briefs, schedules, freelancer coordination.</p>
+      <ul class="lane-list flex flex-col gap-2.5 list-none text-mist-soft text-[0.96rem] font-light">
+        <li>Project coordination for marketing teams</li>
+        <li>Clear briefs and stakeholder management</li>
+        <li>Schedules, milestones and weekly reports</li>
+        <li>Coordination of designers, devs and copywriters</li>
+        <li>Setup and documentation of processes</li>
+        <li>Executive assistance for founders</li>
+      </ul>
+    </div>
+
+    <div class="reveal p-10 md:p-16 transition-colors duration-500 hover:bg-teal/[0.06]">
+      <div class="uppercase text-[0.78rem] tracking-[0.16em] text-teal mb-6 md:mb-8 flex items-center gap-3 before:content-[''] before:w-7 before:h-px before:bg-teal">Lane B · Operations</div>
+      <h3 class="font-display text-[clamp(1.65rem,3vw,2.8rem)] mb-3">Marketing Ops</h3>
+      <p class="text-mist-soft mb-6 max-w-[42ch] font-light leading-relaxed">
+        The how it gets delivered. Briefs, schedules, freelancer coordination.</p>
       </p>
       <ul class="lane-list flex flex-col gap-2.5 list-none text-mist-soft text-[0.96rem] font-light">
         <li>Project coordination para equipos de marketing</li>
@@ -820,9 +835,9 @@
 <section class="py-20 md:py-32 relative z-[2]" id="trabajo">
   <div class="max-w-wrap mx-auto px-5 sm:px-8 lg:px-12">
     <div class="reveal grid grid-cols-1 md:grid-cols-[100px_1fr] gap-4 md:gap-8 mb-10 md:mb-20 items-start">
-      <div class="font-script italic text-teal pt-2 text-[1.3rem] tracking-wide">§ 02 — Trabajo seleccionado</div>
+      <div class="font-script italic text-teal pt-2 text-[1.3rem] tracking-wide">§ 02 — Selected Work</div>
       <h2 class="font-display text-[clamp(2rem,5vw,4.4rem)] leading-none tracking-tight">
-        Una muestra del <span class="font-script italic">cómo</span>.
+        A sample of the <span class="font-script italic">how</span>.
       </h2>
     </div>
 
@@ -944,14 +959,13 @@
   <div class="flex-1 max-w-[80px] md:max-w-[160px] h-px bg-gradient-to-r from-transparent via-teal to-transparent"></div>
 </div>
 
-<!-- ═══════════════════════════════════ SOBRE ═══════════════════════════════════ -->
-<section class="py-20 md:py-32 relative z-[2]" id="sobre"
-  style="background: radial-gradient(ellipse at 80% 50%, rgba(53,115,118,0.12), transparent 60%), linear-gradient(180deg, transparent, rgba(26,15,22,0.6), transparent);">
+<!-- ═══════════════════════════════════ ABOUT ═══════════════════════════════════ -->
+<section class="py-20 md:py-32 relative z-[2]" id="sobre">
   <div class="max-w-wrap mx-auto px-5 sm:px-8 lg:px-12">
     <div class="reveal grid grid-cols-1 md:grid-cols-[100px_1fr] gap-4 md:gap-8 mb-10 md:mb-20 items-start">
-      <div class="font-script italic text-teal pt-2 text-[1.3rem] tracking-wide">§ 03 — Sobre Amanda</div>
+      <div class="font-script italic text-teal pt-2 text-[1.3rem] tracking-wide">§ 03 — About</div>
       <h2 class="font-display text-[clamp(2rem,5vw,4.4rem)] leading-none tracking-tight">
-        Letras + <span class="font-script italic">marketing</span>.
+        Letters + <span class="font-script italic">marketing</span>.
       </h2>
     </div>
 
@@ -959,22 +973,22 @@
       <div class="reveal">
         <span class="block font-display text-teal text-5xl leading-none mb-4 opacity-60">"</span>
         <p class="font-script italic text-[clamp(1.5rem,2.9vw,2.6rem)] leading-snug text-mist font-light">
-          Vengo de <em class="text-teal italic">Letras</em>. Por eso me obsesionan las palabras que se usan, no solo las que se escriben.
+          I come from <em class="text-teal italic">Literature</em>. That's why I'm obsessed with the words we use, not just the ones we write.
         </p>
       </div>
 
       <div class="reveal editorial-strong space-y-5 text-mist-soft font-light leading-relaxed">
         <p>
-          <strong>6+ años</strong> trabajando como copywriter, content manager y coordinadora en agencias, productos digitales y marcas LATAM.
+          <strong>6+ years</strong> working as copywriter, content manager and coordinator in agencies, digital products and LATAM brands.
         </p>
         <p>
-          Mi formación es en Letras, lo que me dio una base fuerte para escribir bien en español y en inglés (C2). Mi experiencia en operaciones de marketing y como asistente ejecutiva me dio el otro lado: cronogramas, briefs claros, manejo de stakeholders, entrega a tiempo.
+          My background is in Literature, which gave me a strong base to write well in Spanish and English (C2). My experience in marketing operations and as executive assistant gave me the other side: schedules, clear briefs, stakeholder management, on-time delivery.
         </p>
         <p>
-          Soy <strong>venezolana, ahora basada en Colombia</strong> en modo nómada digital. Trabajo remoto en husos horarios LATAM y EE.UU., con disponibilidad para calls cuando el cliente lo necesita. Eso significa entender la región y al mismo tiempo poder colaborar con equipos anglófonos sin fricción.
+          I'm <strong>Venezuelan, now based in Colombia</strong> in digital nomad mode. I work remotely in LATAM and US time zones, available for calls when the client needs it. That means understanding the region while being able to collaborate with English-speaking teams without friction.
         </p>
         <p>
-          Trabajo bien con founders solos, con agencias en crecimiento y con equipos in-house pequeños. Si necesitas a alguien que <strong>escriba y además organice cómo se ejecuta</strong>, ese es el espacio donde aporto más.
+I work well with solo founders, growing agencies and small in-house teams. If you need someone who <strong>writes and also organizes how it gets executed</strong>, that's where I add the most value.
         </p>
       </div>
     </div>
@@ -996,9 +1010,17 @@
         <div class="font-display text-lg mb-1">Bilingüe</div>
         <div class="text-mist-mute text-[0.78rem] tracking-wider">ES nativo · EN C2</div>
       </div>
+<div class="p-5 border-b lg:border-r border-rule sm:border-r">
+        <div class="font-display text-lg mb-1">Project Ops</div>
+        <div class="text-mist-mute text-[0.78rem] tracking-wider">Brief · Schedule</div>
+      </div>
+      <div class="p-5 border-b border-r border-rule">
+        <div class="font-display text-lg mb-1">Bilingual</div>
+        <div class="text-mist-mute text-[0.78rem] tracking-wider">Native ES · EN C2</div>
+      </div>
       <div class="p-5 border-b lg:border-r border-rule sm:border-r">
-        <div class="font-display text-lg mb-1">Husos horarios</div>
-        <div class="text-mist-mute text-[0.78rem] tracking-wider">LATAM · EE.UU.</div>
+        <div class="font-display text-lg mb-1">Time zones</div>
+        <div class="text-mist-mute text-[0.78rem] tracking-wider">LATAM · US</div>
       </div>
       <div class="p-5 border-b border-rule">
         <div class="font-display text-lg mb-1">Stack</div>
@@ -1008,18 +1030,18 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════ CTA / FORMULARIO ═══════════════════════════════════ -->
+<!-- ═══════════════════════════════════ CONTACT ═══════════════════════════════════ -->
 <section class="py-20 md:py-32 relative text-center z-[2]" id="contacto">
   <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 50% 40% at 50% 50%, rgba(53,115,118,0.18), transparent);"></div>
   <div class="relative z-[2] max-w-wrap mx-auto px-5 sm:px-8 lg:px-12">
     <div class="reveal">
-      <div class="font-script italic text-teal pt-2 text-[1.3rem] tracking-wide">§ 04 — Hablemos</div>
+      <div class="font-script italic text-teal pt-2 text-[1.3rem] tracking-wide">§ 04 — Let's talk</div>
       <h2 class="font-display text-[clamp(2.4rem,7.5vw,6.4rem)] tracking-tight leading-none max-w-[18ch] mx-auto mb-6">
-        ¿Necesitas <span class="font-script italic gradient-text-em">contenido</span><br/>
-        que entregue a tiempo?
+        Need <span class="font-script italic gradient-text-em">content</span><br/>
+        that delivers on time?
       </h2>
       <p class="text-[clamp(1.05rem,1.4vw,1.4rem)] text-mist-soft font-light max-w-[50ch] mx-auto mb-10">
-        Disponible para colaboraciones freelance y posiciones in-house. Cuéntame tu proyecto y respondo en menos de 24 horas.
+        Available for freelance collaborations and in-house positions. Tell me about your project and I'll respond within 24 hours.
       </p>
 
       <!-- ⚠️ AMANDA — CONFIGURAR FORMSPREE:
@@ -1029,58 +1051,58 @@
       <form class="max-w-[640px] mx-auto text-left grid gap-7" action="https://formspree.io/f/TU_FORM_ID" method="POST" id="contact-form">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-7">
           <div class="flex flex-col gap-2">
-            <label class="uppercase text-[0.78rem] tracking-[0.16em] text-mist-mute font-medium" for="name">Nombre <span class="text-teal">✦</span></label>
-            <input class="form-input" type="text" id="name" name="name" placeholder="¿Cómo te llamas?" required>
+            <label class="uppercase text-[0.78rem] tracking-[0.16em] text-mist-mute font-medium" for="name">Name <span class="text-teal">✦</span></label>
+            <input class="form-input" type="text" id="name" name="name" placeholder="What's your name?" required>
           </div>
           <div class="flex flex-col gap-2">
             <label class="uppercase text-[0.78rem] tracking-[0.16em] text-mist-mute font-medium" for="email">Email <span class="text-teal">✦</span></label>
-            <input class="form-input" type="email" id="email" name="email" placeholder="tu@correo.com" required>
+            <input class="form-input" type="email" id="email" name="email" placeholder="your@email.com" required>
           </div>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-7">
           <div class="flex flex-col gap-2">
-            <label class="uppercase text-[0.78rem] tracking-[0.16em] text-mist-mute font-medium" for="company">Empresa o proyecto</label>
-            <input class="form-input" type="text" id="company" name="company" placeholder="Opcional">
+            <label class="uppercase text-[0.78rem] tracking-[0.16em] text-mist-mute font-medium" for="company">Company or project</label>
+            <input class="form-input" type="text" id="company" name="company" placeholder="Optional">
           </div>
           <div class="flex flex-col gap-2">
-            <label class="uppercase text-[0.78rem] tracking-[0.16em] text-mist-mute font-medium" for="type">Tipo de colaboración</label>
+            <label class="uppercase text-[0.78rem] tracking-[0.16em] text-mist-mute font-medium" for="type">Collaboration type</label>
             <div class="relative after:content-['☾'] after:absolute after:right-2 after:top-1/2 after:-translate-y-[30%] after:pointer-events-none after:text-teal">
               <select class="form-input form-input--sel" id="type" name="type">
                 <option value="copy-content">Copy & Content</option>
                 <option value="community">Community Management</option>
                 <option value="email-marketing">Email Marketing</option>
                 <option value="project-ops">Project Coordination</option>
-                <option value="full-campaign">Campaña completa</option>
-                <option value="otro">Otro / aún no estoy segurx</option>
+                <option value="full-campaign">Full Campaign</option>
+                <option value="other">Other / not sure yet</option>
               </select>
             </div>
           </div>
         </div>
 
         <div class="flex flex-col gap-2">
-          <label class="uppercase text-[0.78rem] tracking-[0.16em] text-mist-mute font-medium" for="message">Cuéntame tu proyecto <span class="text-teal">✦</span></label>
-          <textarea class="form-input form-input--ta" id="message" name="message" placeholder="¿Qué necesitas, para cuándo, y cómo me imagino encajando? Mientras más contexto, mejor respondo." required></textarea>
+          <label class="uppercase text-[0.78rem] tracking-[0.16em] text-mist-mute font-medium" for="message">Tell me about your project <span class="text-teal">✦</span></label>
+          <textarea class="form-input form-input--ta" id="message" name="message" placeholder="What do you need, by when, and how do you see me fitting in? The more context, the better I can respond." required></textarea>
         </div>
 
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mt-1">
-          <span class="font-script italic text-mist-mute order-2 md:order-1 text-center md:text-left">Respondo en menos de 24 horas ☾</span>
+          <span class="font-script italic text-mist-mute order-2 md:order-1 text-center md:text-left">I respond within 24 hours ☾</span>
           <button class="form__submit order-1 md:order-2 inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-mist text-night border border-mist font-medium text-[0.95rem] tracking-wide cursor-pointer transition-all duration-300 hover:bg-teal hover:border-teal hover:text-mist hover:-translate-y-0.5 hover:shadow-[0_10px_40px_rgba(53,115,118,0.35)]" type="submit">
-            Enviar mensaje <span class="font-script italic text-lg">→</span>
+            Send message <span class="font-script italic text-lg">→</span>
           </button>
         </div>
       </form>
 
       <div class="form__success mt-8 text-center px-4 py-12 border border-dashed border-teal rounded-sm bg-teal/[0.06]" id="form-success">
         <span class="font-display text-5xl text-teal mb-4 block">✦</span>
-        <h3 class="font-display text-2xl mb-2">Mensaje enviado</h3>
-        <p class="text-mist-soft font-light">Gracias. Te respondo en menos de 24 horas.</p>
+        <h3 class="font-display text-2xl mb-2">Message sent</h3>
+        <p class="text-mist-soft font-light">Thank you. I'll respond within 24 hours.</p>
       </div>
 
       <div class="mt-12 pt-8 border-t border-rule text-center flex flex-col md:flex-row items-center justify-center gap-3 md:gap-6 text-mist-mute text-[0.95rem] flex-wrap">
-        <span class="font-script italic">O escríbeme directo en</span>
+        <span class="font-script italic">Or write me directly at</span>
         <a class="text-mist-soft border-b border-transparent transition-all duration-300 hover:text-mist hover:border-teal pb-0.5" href="mailto:amandaescalona30@gmail.com">amandaescalona30@gmail.com</a>
         <a class="text-mist-soft border-b border-transparent transition-all duration-300 hover:text-mist hover:border-teal pb-0.5" href="https://www.linkedin.com/in/amanda-escalona-copy/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
@@ -1104,7 +1126,7 @@
 <div class="cursor-ring" aria-hidden="true"></div>
 
 <!-- Back to top -->
-<button class="back-to-top fixed bottom-6 right-6 md:bottom-7 md:right-7 z-40 w-10 h-10 md:w-12 md:h-12 rounded-full border border-teal/40 bg-night/65 backdrop-blur text-mist cursor-pointer flex items-center justify-center hover:bg-teal hover:border-teal hover:-translate-y-1 hover:shadow-[0_8px_28px_rgba(53,115,118,0.32)]" type="button" aria-label="Volver al inicio">
+<button class="back-to-top fixed bottom-6 right-6 md:bottom-7 md:right-7 z-40 w-10 h-10 md:w-12 md:h-12 rounded-full border border-teal/40 bg-night/65 backdrop-blur text-mist cursor-pointer flex items-center justify-center hover:bg-teal hover:border-teal hover:-translate-y-1 hover:shadow-[0_8px_28px_rgba(53,115,118,0.32)]" type="button" aria-label="Back to top">
   <svg class="back-to-top__icon w-3.5 h-3.5 transition-transform duration-300" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <path d="M7 1.5 L7 12.5 M2.5 6 L7 1.5 L11.5 6" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>

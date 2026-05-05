@@ -1,0 +1,29 @@
+es:
+  nav:
+    home: Inicio
+    trabajo: Trabajo
+    sobre: Sobre mí
+    contacto: Contacto
+  hero:
+    subtitle: Escritora · Copywriter · Community Manager
+    cta: Contáctame
+  footer:
+    rights: Todos los derechos reservados
+    cv: CV (PDF)
+    linkedin: LinkedIn
+    email: Email
+
+en:
+  nav:
+    home: Home
+    trabajo: Work
+    about: About
+    contact: Contact
+  hero:
+    subtitle: Writer · Copywriter · Community Manager
+    cta: Contact me
+  footer:
+    rights: All rights reserved
+    cv: Resume (PDF)
+    linkedin: LinkedIn
+    email: Email
