@@ -1,48 +1,75 @@
-<!--  <section id="rectangle">
-  <div class="rectangle-wrap">
-    <div class="rectangle doddles">
-      <img src="assets/images/DODDLES-RELOAD.svg" alt="Amanda Escalona | Doddles" class="min">
-      <img src="assets/images/DODDLES-RELOAD.svg" alt="Amanda Escalona | Doddles" class="super">
-      <div class="color"></div>
- 
+<!-- CONTACT / FORMULARIO -->
+<section class="py-20 md:py-32 relative text-center z-[2]" id="contacto">
+  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 50% 40% at 50% 50%, rgba(53,115,118,0.18), transparent);"></div>
+  <div class="relative z-[2] max-w-wrap mx-auto px-5 sm:px-8 lg:px-12">
+    <div class="reveal">
+      <div class="font-script italic text-teal pt-2 text-[1.3rem] tracking-wide">§ 04 — Hablemos</div>
+      <h2 class="font-display text-[clamp(2.4rem,7.5vw,6.4rem)] tracking-tight leading-none max-w-[18ch] mx-auto mb-6">
+        ¿Necesitas <span class="font-script italic gradient-text-em">contenido</span><br/>
+        que entregue a tiempo?
+      </h2>
+      <p class="text-[clamp(1.05rem,1.4vw,1.4rem)] text-mist-soft font-light max-w-[50ch] mx-auto mb-10">
+        Disponible para colaboraciones freelance y posiciones in-house. Cuéntame tu proyecto y respondo en menos de 24 horas.
+      </p>
+
+      <form class="max-w-[640px] mx-auto text-left grid gap-7" action="https://formspree.io/f/TU_FORM_ID" method="POST" id="contact-form">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-7">
+          <div class="flex flex-col gap-2">
+            <label class="uppercase text-[0.78rem] tracking-[0.16em] text-mist-mute font-medium" for="name">Nombre <span class="text-teal">✦</span></label>
+            <input class="form-input" type="text" id="name" name="name" placeholder="¿Cómo te llamas?" required>
+          </div>
+          <div class="flex flex-col gap-2">
+            <label class="uppercase text-[0.78rem] tracking-[0.16em] text-mist-mute font-medium" for="email">Email <span class="text-teal">✦</span></label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="tu@correo.com" required>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-7">
+          <div class="flex flex-col gap-2">
+            <label class="uppercase text-[0.78rem] tracking-[0.16em] text-mist-mute font-medium" for="company">Empresa o proyecto</label>
+            <input class="form-input" type="text" id="company" name="company" placeholder="Opcional">
+          </div>
+          <div class="flex flex-col gap-2">
+            <label class="uppercase text-[0.78rem] tracking-[0.16em] text-mist-mute font-medium" for="type">Tipo de colaboración</label>
+            <div class="relative after:content-['☾'] after:absolute after:right-2 after:top-1/2 after:-translate-y-[30%] after:pointer-events-none after:text-teal">
+              <select class="form-input form-input--sel" id="type" name="type">
+                <option value="copy-content">Copy & Content</option>
+                <option value="community">Community Management</option>
+                <option value="email-marketing">Email Marketing</option>
+                <option value="project-ops">Project Coordination</option>
+                <option value="full-campaign">Campaña completa</option>
+                <option value="otro">Otro / aún no estoy segurx</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <label class="uppercase text-[0.78rem] tracking-[0.16em] text-mist-mute font-medium" for="message">Cuéntame tu proyecto <span class="text-teal">✦</span></label>
+          <textarea class="form-input form-input--ta" id="message" name="message" placeholder="¿Qué necesitas, para cuándo, y cómo me imagino encajando? Mientras más contexto, mejor respondo." required></textarea>
+        </div>
+
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mt-1">
+          <span class="font-script italic text-mist-mute order-2 md:order-1 text-center md:text-left">Respondo en menos de 24 horas ☾</span>
+          <button class="form__submit order-1 md:order-2 inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-mist text-night border border-mist font-medium text-[0.95rem] tracking-wide cursor-pointer transition-all duration-300 hover:bg-teal hover:border-teal hover:text-mist hover:-translate-y-0.5 hover:shadow-[0_10px_40px_rgba(53,115,118,0.35)]" type="submit">
+            Enviar mensaje <span class="font-script italic text-lg">→</span>
+          </button>
+        </div>
+      </form>
+
+      <div class="form__success mt-8 text-center px-4 py-12 border border-dashed border-teal rounded-sm bg-teal/[0.06]" id="form-success">
+        <span class="font-display text-5xl text-teal mb-4 block">✦</span>
+        <h3 class="font-display text-2xl mb-2">Mensaje enviado</h3>
+        <p class="text-mist-soft font-light">Gracias. Te respondo en menos de 24 horas.</p>
+      </div>
+
+      <div class="mt-12 pt-8 border-t border-rule text-center flex flex-col md:flex-row items-center justify-center gap-3 md:gap-6 text-mist-mute text-[0.95rem] flex-wrap">
+        <span class="font-script italic">O escríbeme directo en</span>
+        <a class="text-mist-soft border-b border-transparent transition-all duration-300 hover:text-mist hover:border-teal pb-0.5" href="mailto:amandaescalona30@gmail.com">amandaescalona30@gmail.com</a>
+        <a class="text-mist-soft border-b border-transparent transition-all duration-300 hover:text-mist hover:border-teal pb-0.5" href="https://www.linkedin.com/in/amanda-escalona-copy/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
-
-</section>  -->
-
-
-
-<section id="contact">
-
-  <div class="email">
-    <div class="form">
-      <h3>¡Escríbeme!</h3>
-      <p>Estoy interesada en oportunidades freelancer, especialmente proyectos ambiciosos o grandes, también puedes
-        escribirme si tienes otra solicitud o pregunta.
-      </p>
-      <p>
-        No dudes en ponerte en contacto conmigo a través del siguiente formulario: </p>
-
-      <form action="https://formspree.io/xdowgedg" method="POST">
-        <label for="name">Nombre</label>
-
-        <input type="text" name="name" id="name" placeholder="Tu nombre" required>
-
-        <label for="_replyto">Tu correo</label>
-        <input type="email" name="_replyto" id="_replyto" placeholder="correo@personal.meh" required>
-
-
-        <label for="message"> Mensaje</label>
-        <textarea name="message" id="message" rows="3" required
-          placeholder="tengo un proyecto genial que podríamos hacer juntos"></textarea>
-
-        <button type="submit" class="btn-cta">¡Enviar!</button>
-      </form>
-    </div>
-
-    <img src="assets/images/flower-2.png" alt="Amanda Escalona | Contacto ">
-
   </div>
-
-
 </section>

@@ -60,7 +60,54 @@ img{ max-width:100%; display:block; }
 ::selection{ background:var(--teal); color:var(--mist); }
 
 /* ═══════════════════════════════════════════════════════════════════
-   ATMÓSFERA — cielo nocturno
+    CUSTOM SCROLL — Whimsical Gothic
+    ═══════════════════════════════════════════════════════════════════ */
+
+::-webkit-scrollbar{
+  width:6px;
+  height:6px;
+}
+
+::-webkit-scrollbar-track{
+  background:linear-gradient(90deg, var(--night-deep), var(--night));
+}
+
+::-webkit-scrollbar-thumb{
+  background:var(--teal);
+  border-radius:3px;
+  position:relative;
+}
+
+::-webkit-scrollbar-thumb::before{
+  content:"";
+  position:absolute;
+  inset:-4px;
+  background:var(--glow);
+  border-radius:6px;
+  opacity:0;
+  transition:opacity 0.4s ease;
+}
+
+::-webkit-scrollbar-thumb:hover::before{
+  opacity:1;
+}
+
+::-webkit-scrollbar-corner{
+  background:transparent;
+}
+
+*{
+  scrollbar-width:thin;
+  scrollbar-color:var(--teal) var(--night);
+}
+
+html,body{
+  scrollbar-track-color:var(--night);
+  scrollbar-thumb-color:var(--teal);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+    ATMÓSFERA — cielo nocturno
    ═══════════════════════════════════════════════════════════════════ */
 
 body::before{
