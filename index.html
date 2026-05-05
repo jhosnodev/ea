@@ -145,6 +145,7 @@
     transform: translate3d(0, 0, 0);
     will-change: transform, opacity;
     animation: orbit-rise 2.5s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+    --phase: -110%;
   }
   .orbit__moon {
     position: relative; width: 100%; height: 100%;
@@ -155,12 +156,10 @@
     mix-blend-mode: screen;
     opacity: 0.78;
   }
-  .orbit__svg {
+.orbit__svg {
     position: absolute; inset: 0;
     width: 100%; height: 100%; display: block;
-    /* Blur sustal sobre todo el SVG: quita el aspecto vectorial perfecto y
-       da un acabado pintado/aterciopelado a toda la luna */
-    filter: blur(0.9px);
+    filter: blur(0.4px);
   }
   .orbit__shadow {
     position: absolute; inset: -2%;
@@ -364,6 +363,70 @@
     body::after, .orbit, .marquee-track, .title-star::after, .pulse-dot {
       animation: none !important;
     }
+  }
+
+  /* ────────────────────────────────────────────────
+     CURSOR CUSTOM — punto + anillo orbital con delay
+     ──────────────────────────────────────────────── */
+  /* Ocultar cursor nativo en desktop solamente */
+  @media (hover: hover) and (pointer: fine) {
+    body, body * { cursor: none !important; }
+    input, textarea { cursor: text !important; }
+  }
+
+  .cursor-dot,
+  .cursor-ring {
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    will-change: transform;
+    opacity: 0;
+  }
+  .cursor-dot.is-active,
+  .cursor-ring.is-active {
+    opacity: 1;
+  }
+
+  .cursor-dot {
+    width: 6px; height: 6px;
+    background: #E6FCFA;
+    border-radius: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    transition: opacity 0.3s ease, transform 0.15s ease, background 0.25s ease, width 0.25s ease, height 0.25s ease;
+    box-shadow: 0 0 8px rgba(230, 252, 250, 0.4);
+  }
+
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(53, 115, 118, 0.55);
+    border-radius: 50%;
+    background: rgba(53, 115, 118, 0.04);
+    transform: translate3d(-50%, -50%, 0);
+    transition: opacity 0.3s ease, width 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                background 0.35s ease, border-color 0.35s ease;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+  }
+
+  .cursor-ring.is-hovering {
+    width: 56px; height: 56px;
+    background: rgba(53, 115, 118, 0.18);
+    border-color: rgba(91, 217, 168, 0.7);
+  }
+  .cursor-dot.is-hovering {
+    width: 4px; height: 4px;
+    background: #5BD9A8;
+  }
+
+  .cursor-ring.is-clicking {
+    width: 24px; height: 24px;
+    background: rgba(91, 217, 168, 0.25);
+  }
+
+  @media (hover: none), (pointer: coarse), (max-width: 759px) {
+    .cursor-dot, .cursor-ring { display: none; }
   }
 </style>
 </head>
@@ -639,7 +702,7 @@
 
   <div class="hero__meta rise rise-1 flex flex-col md:flex-row gap-2 md:gap-0 justify-between text-mist-mute uppercase text-[0.78rem] tracking-[0.16em] mb-7 md:mb-10">
     <span>Venezolana · Nómada en Colombia · ES + EN</span>
-    <span>Portafolio MMXXVI</span>
+    <span class="text-teal">Portafolio MMXXVI</span>
   </div>
 
   <h1 class="hero__title rise rise-2 title-star font-display text-[clamp(2.8rem,9.5vw,9rem)] leading-[0.92] tracking-[-0.025em] max-w-[14ch] relative">
@@ -1012,12 +1075,15 @@
   <div class="max-w-wrap mx-auto px-5 sm:px-8 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-4">
     <div class="font-script italic text-mist-soft text-base">© MMXXVI · Amanda Escalona ☾</div>
     <div class="flex gap-5 md:gap-7 uppercase tracking-wider flex-wrap justify-center">
-      <a class="hover:text-teal transition" href="#">CV (PDF)</a>
       <a class="hover:text-teal transition" href="https://www.linkedin.com/in/amanda-escalona-copy/" target="_blank" rel="noopener">LinkedIn</a>
       <a class="hover:text-teal transition" href="mailto:amandaescalona30@gmail.com">Email</a>
     </div>
   </div>
 </footer>
+
+<!-- Cursor custom (solo desktop con mouse) -->
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
 
 <!-- Back to top -->
 <button class="back-to-top fixed bottom-6 right-6 md:bottom-7 md:right-7 z-40 w-10 h-10 md:w-12 md:h-12 rounded-full border border-teal/40 bg-night/65 backdrop-blur text-mist cursor-pointer flex items-center justify-center hover:bg-teal hover:border-teal hover:-translate-y-1 hover:shadow-[0_8px_28px_rgba(53,115,118,0.32)]" type="button" aria-label="Volver al inicio">
@@ -1140,6 +1206,63 @@
 
   if (backToTop) {
     backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
+
+  // ═══════════════════════════════════════════════
+  // Cursor custom — solo desktop con mouse fino
+  // ═══════════════════════════════════════════════
+  const hasFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const cursorDot = document.querySelector('.cursor-dot');
+  const cursorRing = document.querySelector('.cursor-ring');
+
+  if (hasFinePointer && cursorDot && cursorRing) {
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let ringX = mouseX, ringY = mouseY;
+    let firstMove = true;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursorDot.style.transform = 'translate3d(' + mouseX + 'px, ' + mouseY + 'px, 0) translate(-50%, -50%)';
+      if (firstMove) {
+        cursorDot.classList.add('is-active');
+        cursorRing.classList.add('is-active');
+        firstMove = false;
+      }
+    }, { passive: true });
+
+    function animateRing() {
+      ringX += (mouseX - ringX) * 0.18;
+      ringY += (mouseY - ringY) * 0.18;
+      cursorRing.style.transform = 'translate3d(' + ringX.toFixed(2) + 'px, ' + ringY.toFixed(2) + 'px, 0) translate(-50%, -50%)';
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    const hoverSelector = 'a, button, [role="button"], .tag, .project, input[type="submit"], select, label';
+    document.querySelectorAll(hoverSelector).forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursorRing.classList.add('is-hovering');
+        cursorDot.classList.add('is-hovering');
+      });
+      el.addEventListener('mouseleave', () => {
+        cursorRing.classList.remove('is-hovering');
+        cursorDot.classList.remove('is-hovering');
+      });
+    });
+
+    document.addEventListener('mousedown', () => cursorRing.classList.add('is-clicking'), { passive: true });
+    document.addEventListener('mouseup',   () => cursorRing.classList.remove('is-clicking'), { passive: true });
+
+    document.addEventListener('mouseleave', () => {
+      cursorDot.classList.remove('is-active');
+      cursorRing.classList.remove('is-active');
+    });
+    document.addEventListener('mouseenter', () => {
+      cursorDot.classList.add('is-active');
+      cursorRing.classList.add('is-active');
+    });
   }
 
   // ═══════════════════════════════════════════════
