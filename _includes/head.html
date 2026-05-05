@@ -91,8 +91,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Albert+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-<!-- Custom CSS -->
-<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" type="text/css">
+<!-- Custom CSS (Tailwind CDN + inline styles above) -->
 
 <style>
   /* Atmósfera de cielo nocturno */
@@ -250,6 +249,13 @@
 
   /* Cursor custom */
   @media (hover: hover) and (pointer: fine) { body, body * { cursor: none !important; } input, textarea { cursor: text !important; } }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #1A0F16; }
+  ::-webkit-scrollbar-thumb { background: #357376; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #27405E; }
+  @supports (scrollbar-width: thin) { * { scrollbar-width: thin; scrollbar-color: #357376 #1A0F16; } }
   .cursor-dot, .cursor-ring { position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999; will-change: transform; opacity: 0; }
   .cursor-dot.is-active, .cursor-ring.is-active { opacity: 1; }
   .cursor-dot { width: 6px; height: 6px; background: #E6FCFA; border-radius: 50%; transform: translate3d(-50%, -50%, 0); transition: opacity 0.3s ease, transform 0.15s ease, background 0.25s ease, width 0.25s ease, height 0.25s ease; box-shadow: 0 0 8px rgba(230, 252, 250, 0.4); }
