@@ -1,0 +1,67 @@
+<!-- NAVIGATION -->
+<nav class="fixed top-0 inset-x-0 z-50 px-5 sm:px-8 lg:px-12 py-4 flex items-center justify-between gap-4 backdrop-blur-md bg-gradient-to-b from-night/90 to-transparent" aria-label="Navegación principal">
+  <a class="font-display text-base lg:text-lg flex items-center gap-2 flex-shrink-0 text-mist tracking-wide" href="#" aria-label="Inicio — Amanda Escalona">
+    <span class="inline-block w-2 h-2 rounded-full bg-moon" style="box-shadow: 0 0 12px #F2EBD3, 0 0 24px rgba(242,235,211,0.4);"></span>
+    <span class="hidden md:inline">Amanda Escalona</span>
+    <span class="md:hidden">AE</span>
+  </a>
+
+  <div class="flex items-center gap-3 lg:gap-6">
+    <!-- Open to work badge -->
+    <a class="nav__badge inline-flex items-center gap-2 px-3 py-2 lg:px-4 rounded-full border border-available/40 bg-gradient-to-b from-available/10 to-available/5 text-mist text-[0.7rem] tracking-[0.12em] font-semibold uppercase whitespace-nowrap transition-all duration-300 hover:border-available/70 hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(91,217,168,0.18)]" href="#contacto" aria-label="Abierta a nuevos proyectos — ir a sección de contacto">
+      <span class="pulse-dot relative w-[7px] h-[7px] rounded-full bg-available flex-shrink-0" aria-hidden="true"></span>
+      <span>Open to work</span>
+    </a>
+
+    <!-- Desktop links -->
+    <div class="hidden lg:flex gap-9 text-[0.78rem] tracking-[0.16em] uppercase text-mist-soft">
+      <a class="nav__link relative transition-colors duration-300 hover:text-mist" href="#trabajo">Trabajo</a>
+      <a class="nav__link relative transition-colors duration-300 hover:text-mist" href="#sobre">Sobre</a>
+      <a class="nav__link relative transition-colors duration-300 hover:text-mist" href="#contacto">Contacto</a>
+    </div>
+
+    <a href="/en/" onclick="localStorage.setItem('preferred_lang', 'en')" class="text-[0.75rem]" style="color:#E6FCFA;text-decoration:none;padding:4px 8px;border:1px solid rgba(230,252,250,0.14);border-radius:4px;">EN</a>
+
+    <!-- Burger button (mobile) -->
+    <button class="nav__burger lg:hidden w-10 h-10 rounded-full border border-rule bg-transparent cursor-pointer relative p-0 flex-shrink-0 transition hover:border-teal hover:bg-teal/10" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+      <span class="burger-line" aria-hidden="true"></span>
+      <span class="burger-line" aria-hidden="true"></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu fixed inset-0 z-[60] bg-night-deep/95 backdrop-blur-xl flex items-start justify-center overflow-y-auto" id="mobile-menu" aria-hidden="true" role="dialog" aria-label="Menú principal">
+  <button class="mobile-menu__close absolute top-5 right-5 w-12 h-12 rounded-full border border-mist/25 hover:border-teal hover:bg-teal/15 bg-night/40 backdrop-blur flex items-center justify-center text-mist transition-all duration-300 z-10" type="button" aria-label="Cerrar menú">
+    <svg class="w-5 h-5" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M5 5 L15 15 M15 5 L5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </button>
+
+  <div class="mobile-menu__panel w-[min(92%,440px)] text-center px-4 pt-24 pb-12">
+    <div class="font-display text-mist text-2xl mb-2">Amanda Escalona</div>
+    <div class="font-script italic text-teal/50 text-sm tracking-[0.4em] mb-10">☾ ✦ ☾</div>
+
+    <nav class="flex flex-col mb-10" aria-label="Secciones del sitio">
+      <a class="mobile-menu__link font-display text-mist text-[clamp(2.2rem,10vw,3.2rem)] py-4 border-y border-rule -mb-px leading-none tracking-tight transition-all duration-300 hover:text-teal hover:pl-2" href="#">
+        <span class="font-script italic text-teal text-[0.65em] align-super mr-2 opacity-70">00</span>Home
+      </a>
+      <a class="mobile-menu__link font-display text-mist text-[clamp(2.2rem,10vw,3.2rem)] py-4 border-b border-rule leading-none tracking-tight transition-all duration-300 hover:text-teal hover:pl-2" href="#trabajo">
+        <span class="font-script italic text-teal text-[0.65em] align-super mr-2 opacity-70">01</span>Trabajo
+      </a>
+      <a class="mobile-menu__link font-display text-mist text-[clamp(2.2rem,10vw,3.2rem)] py-4 border-b border-rule leading-none tracking-tight transition-all duration-300 hover:text-teal hover:pl-2" href="#sobre">
+        <span class="font-script italic text-teal text-[0.65em] align-super mr-2 opacity-70">02</span>Sobre
+      </a>
+      <a class="mobile-menu__link font-display text-mist text-[clamp(2.2rem,10vw,3.2rem)] py-4 border-b border-rule leading-none tracking-tight transition-all duration-300 hover:text-teal hover:pl-2" href="#contacto">
+        <span class="font-script italic text-teal text-[0.65em] align-super mr-2 opacity-70">03</span>Contacto
+      </a>
+    </nav>
+
+    <a class="mobile-menu__cta inline-flex items-center justify-center gap-3 px-6 py-4 mb-6 rounded-full border border-available/45 bg-gradient-to-b from-available/15 to-available/5 text-mist text-sm font-medium tracking-wide transition hover:border-available/70 hover:from-available/25 hover:to-available/10" href="#contacto">
+      <span class="pulse-dot relative w-2 h-2 rounded-full bg-available" aria-hidden="true"></span>
+      Open to work — Hablemos
+    </a>
+
+    <div class="font-script italic text-mist-mute text-xs tracking-wider">amandaescalona.com · MMXXVI</div>
+  </div>
+</div>

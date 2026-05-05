@@ -56,7 +56,6 @@ defaults:
     values:
       image: true
 # Build settings
-theme: minima
 
 permalink: /:title
 

@@ -1,0 +1,73 @@
+<section class="section cta" id="contacto">
+  <div class="wrap">
+    <div class="cta__inner reveal">
+      <div class="cta__pre uppercase">§ 04 — Hablemos</div>
+      <h2 class="cta__title display">
+        ¿Necesitas <span class="italic">contenido</span><br/>
+        que entregue a tiempo?
+      </h2>
+      <p class="cta__desc">
+        Disponible para colaboraciones freelance y posiciones in-house. Cuéntame tu proyecto y respondo en menos de 24 horas.
+      </p>
+
+      <form class="form" action="https://formspree.io/f/TU_FORM_ID" method="POST" id="contact-form">
+        <div class="form__row--split">
+          <div class="form__row">
+            <label class="form__label" for="name">Nombre <span class="req">✦</span></label>
+            <input class="form__input" type="text" id="name" name="name" placeholder="¿Cómo te llamas?" required>
+          </div>
+          <div class="form__row">
+            <label class="form__label" for="email">Email <span class="req">✦</span></label>
+            <input class="form__input" type="email" id="email" name="email" placeholder="tu@correo.com" required>
+          </div>
+        </div>
+
+        <div class="form__row--split">
+          <div class="form__row">
+            <label class="form__label" for="company">Empresa o proyecto</label>
+            <input class="form__input" type="text" id="company" name="company" placeholder="Opcional">
+          </div>
+          <div class="form__row">
+            <label class="form__label" for="type">Tipo de colaboración</label>
+            <div class="form__select-wrap">
+              <select class="form__select" id="type" name="type">
+                <option value="copy-content">Copy & Content</option>
+                <option value="community">Community Management</option>
+                <option value="email-marketing">Email Marketing</option>
+                <option value="project-ops">Project Coordination</option>
+                <option value="full-campaign">Campaña completa</option>
+                <option value="otro">Otro / aún no estoy segurx</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form__row">
+          <label class="form__label" for="message">Cuéntame tu proyecto <span class="req">✦</span></label>
+          <textarea class="form__textarea" id="message" name="message" placeholder="¿Qué necesitas, para cuándo, y cómo me imagino encajando? Mientras más contexto, mejor respondo." required></textarea>
+        </div>
+
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+        <div class="form__submit-row">
+          <span class="form__note">Respondo en menos de 24 horas ☾</span>
+          <button class="form__submit" type="submit">
+            Enviar mensaje <span class="btn__arrow">→</span>
+          </button>
+        </div>
+      </form>
+
+      <div class="form__success" id="form-success">
+        <span class="form__success-mark">✦</span>
+        <h3 class="form__success-title display">Mensaje enviado</h3>
+        <p class="form__success-text">Gracias. Te respondo en menos de 24 horas.</p>
+      </div>
+
+      <div class="contact-alt">
+        <span>O escríbeme directo en</span>
+        <a href="mailto:amandaescalona30@gmail.com">amandaescalona30@gmail.com</a>
+        <a href="https://www.linkedin.com/in/amanda-escalona-copy/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
