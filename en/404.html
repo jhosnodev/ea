@@ -95,40 +95,40 @@
   }
   ::selection { background: #357376; color: #E6FCFA; }
 
-  /* Static moon orb (no phase animation, no scroll) */
+  /* Moon orb */
   .orbit {
-    position: fixed;
-    top: 14%; right: 8%;
+    position: fixed; top: 14%; right: 8%;
     width: clamp(110px, 14vw, 200px);
     height: clamp(110px, 14vw, 200px);
-    border-radius: 50%;
-    background:
-      radial-gradient(circle at 30% 30%,
-        rgba(242,235,211,0.92) 0%,
-        rgba(220,210,180,0.78) 35%,
-        rgba(140,128,98,0.45) 75%,
-        rgba(60,52,40,0.25) 100%);
-    box-shadow:
-      0 0 50px rgba(138, 149, 201, 0.15),
-      0 0 100px rgba(89, 101, 160, 0.08),
-      inset -16px -18px 36px rgba(0, 0, 0, 0.42);
-    mix-blend-mode: screen;
-    opacity: 0.62;
-    z-index: 1;
-    pointer-events: none;
+    z-index: 1; pointer-events: none;
+    opacity: 0; transform: translate3d(0, 0, 0);
+    will-change: transform, opacity;
     animation: orbit-rise 2.5s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
-    opacity: 0;
+    --phase: -110%;
+  }
+  .orbit__moon {
+    position: relative; width: 100%; height: 100%;
+    border-radius: 50%; overflow: hidden;
+    box-shadow: 0 0 50px rgba(138, 149, 201, 0.15), 0 0 100px rgba(89, 101, 160, 0.08);
+    mix-blend-mode: screen; opacity: 0.78;
+  }
+  .orbit__svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; filter: blur(0.4px); }
+  .orbit__shadow {
+    position: absolute; inset: -2%; border-radius: 50%;
+    background: radial-gradient(circle at center, #000 55%, rgba(0,0,0,0.78) 78%, rgba(0,0,0,0.0) 100%);
+    transform: translate3d(var(--phase, -110%), 0, 0); will-change: transform;
+    filter: blur(4.5px);
   }
   @keyframes orbit-rise {
     from { transform: translate3d(0, 40px, 0) scale(0.9); opacity: 0; }
-    to   { transform: translate3d(0, 0, 0)    scale(1);   opacity: 0.62; }
+    to   { transform: translate3d(0, 0, 0)    scale(1);   opacity: 1; }
   }
   @media (max-width: 759px) {
-    .orbit { width: 78px; height: 78px; top: 5.5rem; right: 1rem; opacity: 0.5; }
-    @keyframes orbit-rise {
-      from { transform: translate3d(0, 40px, 0) scale(0.9); opacity: 0; }
-      to   { transform: translate3d(0, 0, 0)    scale(1);   opacity: 0.5; }
-    }
+    .orbit { width: 78px; height: 78px; top: 5.5rem; right: 1rem; }
+    .orbit__moon { opacity: 0.55; }
+  }
+  @media (max-width: 379px) {
+    .orbit { width: 65px; height: 65px; top: 5rem; right: 0.85rem; }
   }
 
   /* Reusable rise animation */
@@ -162,10 +162,21 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
-    body::after, .orbit { animation: none !important; }
+    body::after, .orbit, .marquee-track, .title-star::after, .pulse-dot { animation: none !important; }
     .rise { opacity: 1; }
-    .orbit { opacity: 0.62; }
+    .orbit { opacity: 1; }
   }
+
+  /* Cursor custom */
+  @media (hover: hover) and (pointer: fine) { body, body * { cursor: none !important; } input, textarea { cursor: text !important; } }
+  .cursor-dot, .cursor-ring { position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999; will-change: transform; opacity: 0; }
+  .cursor-dot.is-active, .cursor-ring.is-active { opacity: 1; }
+  .cursor-dot { width: 6px; height: 6px; background: #E6FCFA; border-radius: 50%; transform: translate3d(-50%, -50%, 0); transition: opacity 0.3s ease, transform 0.15s ease, background 0.25s ease, width 0.25s ease, height 0.25s ease; box-shadow: 0 0 8px rgba(230, 252, 250, 0.4); }
+  .cursor-ring { width: 36px; height: 36px; border: 1px solid rgba(53, 115, 118, 0.55); border-radius: 50%; background: rgba(53, 115, 118, 0.04); transform: translate3d(-50%, -50%, 0); transition: opacity 0.3s ease, width 0.35s cubic-bezier(0.16, 1, 0.3, 1), height 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.35s ease, border-color 0.35s ease; backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); }
+  .cursor-ring.is-hovering { width: 56px; height: 56px; background: rgba(53, 115, 118, 0.18); border-color: rgba(91, 217, 168, 0.7); }
+  .cursor-dot.is-hovering { width: 4px; height: 4px; background: #5BD9A8; }
+  .cursor-ring.is-clicking { width: 24px; height: 24px; background: rgba(91, 217, 168, 0.25); }
+  @media (hover: none), (pointer: coarse), (max-width: 759px) { .cursor-dot, .cursor-ring { display: none; } }
 
   :focus-visible {
     outline: 2px solid #357376;
@@ -177,16 +188,25 @@
 
 <body class="bg-night text-mist font-body antialiased relative overflow-x-hidden min-h-screen">
 
-<!-- Moon orb (decorative) -->
-<div class="orbit" aria-hidden="true"></div>
+<!-- Custom cursor -->
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+
+<!-- Moon orb (same as index) -->
+  <div class="orbit" aria-hidden="true">
+    <div class="orbit__moon">
+      <img class="orbit__svg" src="{{ site.baseurl | default: '' }}/assets/images/moon.webp" alt="Moon" style="opacity: 0.85;" />
+      <div class="orbit__shadow"></div>
+    </div>
+  </div>
 
 <!-- ═══════════════════════════════════ NAV ═══════════════════════════════════ -->
 <nav class="fixed top-0 inset-x-0 z-50 px-5 sm:px-8 lg:px-12 py-4 flex items-center justify-between gap-4 backdrop-blur-md bg-gradient-to-b from-night/90 to-transparent" aria-label="Main navigation">
-  <a class="font-display text-base lg:text-lg flex items-center gap-2 flex-shrink-0 text-mist tracking-wide" href="/" aria-label="Home — Amanda Escalona">
+  <a class="font-display text-base lg:text-lg flex items-center gap-2 flex-shrink-0 text-mist tracking-wide" href="{{ site.baseurl | default: '' }}/" aria-label="Home — Amanda Escalona">
     <span class="inline-block w-2 h-2 rounded-full bg-moon" style="box-shadow: 0 0 12px #F2EBD3, 0 0 24px rgba(242,235,211,0.4);"></span>
     Amanda Escalona
   </a>
-  <a class="text-[0.78rem] tracking-[0.16em] uppercase text-mist-soft hover:text-mist transition-colors duration-300" href="/">
+  <a class="text-[0.78rem] tracking-[0.16em] uppercase text-mist-soft hover:text-mist transition-colors duration-300" href="{{ site.baseurl | default: '' }}/">
     ← Back to home
   </a>
 </nav>
@@ -216,10 +236,10 @@
 
   <!-- CTAs -->
   <div class="rise rise-5 flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
-    <a class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-mist text-night border border-mist font-medium text-[0.95rem] tracking-wide transition-all duration-300 hover:bg-teal hover:border-teal hover:text-mist hover:-translate-y-0.5 hover:shadow-[0_10px_40px_rgba(53,115,118,0.35)]" href="/">
+    <a class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-mist text-night border border-mist font-medium text-[0.95rem] tracking-wide transition-all duration-300 hover:bg-teal hover:border-teal hover:text-mist hover:-translate-y-0.5 hover:shadow-[0_10px_40px_rgba(53,115,118,0.35)]" href="{{ site.baseurl | default: '' }}/">
       Back to home <span class="font-script italic text-lg">→</span>
     </a>
-    <a class="text-mist-soft border-b border-transparent transition-all duration-300 hover:text-mist hover:border-teal pb-0.5 text-[0.95rem]" href="/#contacto">
+    <a class="text-mist-soft border-b border-transparent transition-all duration-300 hover:text-mist hover:border-teal pb-0.5 text-[0.95rem]" href="{{ site.baseurl | default: '' }}/#contacto">
       or write me directly
     </a>
   </div>
@@ -241,6 +261,98 @@
     <div class="font-script italic text-mist-soft text-base">© MMXXVI · Amanda Escalona ☾</div>
   </div>
 </footer>
+
+<script>
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CURSOR CUSTOM — dot + orbital ring with delay
+  // ═══════════════════════════════════════════════════════════════════════════════
+  (function() {
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorRing = document.querySelector('.cursor-ring');
+    if (!cursorDot || !cursorRing) return;
+    
+    const links = document.querySelectorAll('a, button, input, textarea, [role="button"]');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    let dotX = 0, dotY = 0, ringX = 0, ringY = 0;
+    let targetX = 0, targetY = 0;
+    let mouseX = 0, mouseY = 0;
+    let isHovering = false, isClicking = false;
+    
+    if (prefersReducedMotion) {
+      cursorDot.classList.add('is-active');
+      cursorRing.classList.add('is-active');
+      return;
+    }
+    
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      targetX = mouseX;
+      targetY = mouseY;
+      cursorDot.classList.add('is-active');
+      cursorRing.classList.add('is-active');
+    });
+    
+    document.addEventListener('mousedown', () => { isClicking = true; cursorRing.classList.add('is-clicking'); cursorDot.classList.add('is-hovering'); });
+    document.addEventListener('mouseup', () => { isClicking = false; cursorRing.classList.remove('is-clicking'); cursorDot.classList.remove('is-hovering'); });
+    
+    links.forEach(link => {
+      link.addEventListener('mouseenter', () => { isHovering = true; cursorRing.classList.add('is-hovering'); cursorDot.classList.add('is-hovering'); });
+      link.addEventListener('mouseleave', () => { isHovering = false; cursorRing.classList.remove('is-hovering'); cursorDot.classList.remove('is-hovering'); });
+    });
+    
+    function animate() {
+      const dt = 0.14;
+      const dr = 0.1;
+      dotX += (targetX - dotX) * dt;
+      dotY += (targetY - dotY) * dt;
+      ringX += (mouseX - ringX) * dr;
+      ringY += (mouseY - ringY) * dr;
+      
+      cursorDot.style.transform = `translate3d(${dotX}px, ${dotY}px, 0)`;
+      cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
+      requestAnimationFrame(animate);
+    }
+    animate();
+  })();
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ORBIT SHADOW — lunar phases on scroll
+  // ═══════════════════════════════════════════════════════════════════════════════
+  (function() {
+    const orbit = document.querySelector('.orbit');
+    const orbitShadow = document.querySelector('.orbit__shadow');
+    if (!orbitShadow) return;
+    
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reducedMotion) return;
+    
+    let ticking = false;
+    function updateScrollFx() {
+      const y = window.scrollY;
+      const docH = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+      const progress = Math.min(Math.max(y / docH, 0), 1);
+      
+      const phase = -110 + (progress * 220);
+      orbitShadow.style.transform = 'translate3d(' + phase.toFixed(2) + '%, 0, 0)';
+      
+      if (orbit) {
+        const parallaxY = y * 0.10;
+        const fadeStart = 0.85;
+        const fadeAlpha = progress > fadeStart ? Math.max(0, 1 - ((progress - fadeStart) / (1 - fadeStart))) : 1;
+        orbit.style.transform = 'translate3d(0, ' + parallaxY.toFixed(2) + 'px, 0)';
+        orbit.style.opacity = fadeAlpha.toFixed(3);
+      }
+      
+      ticking = false;
+    }
+    
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(updateScrollFx); ticking = true; }
+    }, { passive: true });
+  })();
+</script>
 
 </body>
 </html>
