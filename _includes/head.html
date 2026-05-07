@@ -264,4 +264,71 @@
   .cursor-dot.is-hovering { width: 4px; height: 4px; background: #5BD9A8; }
   .cursor-ring.is-clicking { width: 24px; height: 24px; background: rgba(91, 217, 168, 0.25); }
   @media (hover: none), (pointer: coarse), (max-width: 759px) { .cursor-dot, .cursor-ring { display: none; } }
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     TESTIMONIOS — slider con scroll-snap nativo
+     ═══════════════════════════════════════════════════════════════════════ */
+  .testimonials__track {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-padding-inline: 0;
+  }
+  .testimonials__track::-webkit-scrollbar { display: none; }
+
+  .testimonials__card {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    transition: border-color 0.5s ease, transform 0.5s ease;
+  }
+  .testimonials__card:hover {
+    border-color: rgba(53, 115, 118, 0.55);
+  }
+
+  .testimonials__dot {
+    width: 8px; height: 8px;
+    border-radius: 9999px;
+    background: rgba(230, 252, 250, 0.22);
+    border: 0; padding: 0; cursor: pointer;
+    transition: background 0.3s ease, width 0.3s ease;
+  }
+  .testimonials__dot:hover {
+    background: rgba(230, 252, 250, 0.45);
+  }
+  .testimonials__dot.is-active {
+    background: #357376;
+    width: 28px;
+  }
+
+  .testimonials__arrow {
+    width: 42px; height: 42px;
+    border-radius: 9999px;
+    border: 1px solid rgba(230, 252, 250, 0.18);
+    background: transparent;
+    color: rgba(230, 252, 250, 0.72);
+    display: inline-flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .testimonials__arrow:hover {
+    border-color: #357376;
+    background: rgba(53, 115, 118, 0.10);
+    color: #E6FCFA;
+  }
+  .testimonials__arrow:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     TIMELINE — entrada hover sutil
+     ═══════════════════════════════════════════════════════════════════════ */
+  .timeline li {
+    transition: opacity 0.4s ease;
+  }
+  .timeline li:hover h3 {
+    color: #E6FCFA;
+  }
+  .timeline li h3 {
+    transition: color 0.3s ease;
+  }
 </style>
