@@ -1,72 +1,78 @@
-<!-- CONTACT / FORMULARIO -->
+<!-- CONTACT / FORM EN -->
 <section class="py-20 md:py-32 relative text-center z-[2]" id="contacto">
   <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 50% 40% at 50% 50%, rgba(53,115,118,0.18), transparent);"></div>
   <div class="relative z-[2] max-w-wrap mx-auto px-5 sm:px-8 lg:px-12">
     <div class="reveal">
-      <div class="text-teal uppercase text-[0.78rem] tracking-[0.16em] mb-4">§ 07 — Hablemos</div>
+      <div class="text-teal uppercase text-[0.78rem] tracking-[0.16em] mb-4">§ 07 — Let's talk</div>
       <h2 class="font-display text-[clamp(2.4rem,7.5vw,6.4rem)] tracking-tight leading-none max-w-[18ch] mx-auto mb-6">
-        ¿Necesitas <span class="font-script italic gradient-text-em">contenido</span><br/>
-        que entregue a tiempo?
+        Need <span class="font-script italic gradient-text-em">content</span><br/>
+        that ships on time?
       </h2>
       <p class="text-[clamp(1.05rem,1.4vw,1.4rem)] text-mist-soft font-light max-w-[50ch] mx-auto mb-10">
-        Disponible para colaboraciones freelance y posiciones in-house. Cuéntame tu proyecto y respondo en menos de 24 horas.
+        Available for freelance projects and in-house roles. Tell me about your project and I'll respond within 24 hours.
       </p>
 
-      <form class="max-w-[640px] mx-auto text-left grid gap-7" action="https://formspree.io/f/TU_FORM_ID" method="POST" id="contact-form">
+      <!--
+      ⚠️ AMANDA — CONFIGURE FORMSPREE:
+           1. Create a free account at https://formspree.io/
+           2. Create a new form and copy the ID (something like xnqklveq)
+           3. Replace YOUR_FORM_ID below with that ID
+      -->
+      <form class="max-w-[640px] mx-auto text-left grid gap-7" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="contact-form">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-7">
           <div class="flex flex-col gap-2">
-            <label class="uppercase text-[0.78rem] tracking-[0.16em] text-mist-mute font-medium" for="name">Nombre <span class="text-teal">✦</span></label>
-            <input class="form-input" type="text" id="name" name="name" placeholder="¿Cómo te llamas?" required>
+            <label class="uppercase text-[0.78rem] tracking-[0.16em] text-mist-mute font-medium" for="name">Name <span class="text-teal">✦</span></label>
+            <input class="form-input" type="text" id="name" name="name" placeholder="What's your name?" required>
           </div>
           <div class="flex flex-col gap-2">
             <label class="uppercase text-[0.78rem] tracking-[0.16em] text-mist-mute font-medium" for="email">Email <span class="text-teal">✦</span></label>
-            <input class="form-input" type="email" id="email" name="email" placeholder="tu@correo.com" required>
+            <input class="form-input" type="email" id="email" name="email" placeholder="your@email.com" required>
           </div>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-7">
           <div class="flex flex-col gap-2">
-            <label class="uppercase text-[0.78rem] tracking-[0.16em] text-mist-mute font-medium" for="company">Empresa o proyecto</label>
-            <input class="form-input" type="text" id="company" name="company" placeholder="Opcional">
+            <label class="uppercase text-[0.78rem] tracking-[0.16em] text-mist-mute font-medium" for="company">Company or project</label>
+            <input class="form-input" type="text" id="company" name="company" placeholder="Optional">
           </div>
           <div class="flex flex-col gap-2">
-            <label class="uppercase text-[0.78rem] tracking-[0.16em] text-mist-mute font-medium" for="type">Tipo de colaboración</label>
+            <label class="uppercase text-[0.78rem] tracking-[0.16em] text-mist-mute font-medium" for="type">Collaboration type</label>
             <div class="relative after:content-['☾'] after:absolute after:right-2 after:top-1/2 after:-translate-y-[30%] after:pointer-events-none after:text-teal">
               <select class="form-input form-input--sel" id="type" name="type">
                 <option value="copy-content">Copy & Content</option>
                 <option value="community">Community Management</option>
                 <option value="email-marketing">Email Marketing</option>
                 <option value="project-ops">Project Coordination</option>
-                <option value="full-campaign">Campaña completa</option>
-                <option value="otro">Otro / aún no estoy segurx</option>
+                <option value="full-campaign">Full Campaign</option>
+                <option value="other">Other / not sure yet</option>
               </select>
             </div>
           </div>
         </div>
 
         <div class="flex flex-col gap-2">
-          <label class="uppercase text-[0.78rem] tracking-[0.16em] text-mist-mute font-medium" for="message">Cuéntame tu proyecto <span class="text-teal">✦</span></label>
-          <textarea class="form-input form-input--ta" id="message" name="message" placeholder="¿Qué necesitas, para cuándo, y cómo me imagino encajando? Mientras más contexto, mejor respondo." required></textarea>
+          <label class="uppercase text-[0.78rem] tracking-[0.16em] text-mist-mute font-medium" for="message">Tell me about your project <span class="text-teal">✦</span></label>
+          <textarea class="form-input form-input--ta" id="message" name="message" placeholder="What do you need, by when, and how do you see me fitting in? The more context, the better I can respond." required></textarea>
         </div>
 
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mt-1">
-          <span class="font-script italic text-mist-mute order-2 md:order-1 text-center md:text-left">Respondo en menos de 24 horas ☾</span>
+          <span class="font-script italic text-mist-mute order-2 md:order-1 text-center md:text-left">I respond within 24 hours ☾</span>
           <button class="form__submit order-1 md:order-2 inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-mist text-night border border-mist font-medium text-[0.95rem] tracking-wide cursor-pointer transition-all duration-300 hover:bg-teal hover:border-teal hover:text-mist hover:-translate-y-0.5 hover:shadow-[0_10px_40px_rgba(53,115,118,0.35)]" type="submit">
-            Enviar mensaje <span class="font-script italic text-lg">→</span>
+            Send message <span class="font-script italic text-lg">→</span>
           </button>
         </div>
       </form>
 
       <div class="form__success mt-8 text-center px-4 py-12 border border-dashed border-teal rounded-sm bg-teal/[0.06]" id="form-success">
         <span class="font-display text-5xl text-teal mb-4 block">✦</span>
-        <h3 class="font-display text-2xl mb-2">Mensaje enviado</h3>
-        <p class="text-mist-soft font-light">Gracias. Te respondo en menos de 24 horas.</p>
+        <h3 class="font-display text-2xl mb-2">Message sent</h3>
+        <p class="text-mist-soft font-light">Thanks. I'll get back to you within 24 hours.</p>
       </div>
 
       <div class="mt-12 pt-8 border-t border-rule text-center flex flex-col md:flex-row items-center justify-center gap-3 md:gap-6 text-mist-mute text-[0.95rem] flex-wrap">
-        <span class="font-script italic">O escríbeme directo en</span>
+        <span class="font-script italic">Or write me directly at</span>
         <a class="text-mist-soft border-b border-transparent transition-all duration-300 hover:text-mist hover:border-teal pb-0.5" href="mailto:amandaescalona30@gmail.com">amandaescalona30@gmail.com</a>
         <a class="text-mist-soft border-b border-transparent transition-all duration-300 hover:text-mist hover:border-teal pb-0.5" href="https://www.linkedin.com/in/amanda-escalona-copy/" target="_blank" rel="noopener">LinkedIn</a>
       </div>

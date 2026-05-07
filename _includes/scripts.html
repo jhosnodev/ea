@@ -205,4 +205,75 @@ if (form) {
     }
   });
 }
+
+// ═══════════════════════════════════════════════════════════════════════
+// Sliders (Logros + Testimonios) — scroll-snap nativo + dots/arrows
+// Soporta múltiples instancias scopeadas a cada contenedor .testimonials
+// ═══════════════════════════════════════════════════════════════════════
+const sliderUpdaters = [];
+
+document.querySelectorAll('.testimonials').forEach(container => {
+  const track  = container.querySelector('.testimonials__track');
+  const cards  = container.querySelectorAll('.testimonials__card');
+  const dots   = container.querySelectorAll('.testimonials__dot');
+  const arrows = container.querySelectorAll('.testimonials__arrow');
+
+  if (!track || cards.length === 0) return;
+
+  let activeIdx = 0;
+
+  function getClosestCardIndex() {
+    const trackRect = track.getBoundingClientRect();
+    const trackCenter = trackRect.left + trackRect.width / 2;
+    let closest = 0;
+    let closestDist = Infinity;
+    cards.forEach((card, i) => {
+      const r = card.getBoundingClientRect();
+      const center = r.left + r.width / 2;
+      const dist = Math.abs(center - trackCenter);
+      if (dist < closestDist) { closestDist = dist; closest = i; }
+    });
+    return closest;
+  }
+
+  function updateActive() {
+    activeIdx = getClosestCardIndex();
+    dots.forEach((d, i) => d.classList.toggle('is-active', i === activeIdx));
+    arrows.forEach(a => {
+      if (a.dataset.dir === 'prev') a.disabled = activeIdx <= 0;
+      if (a.dataset.dir === 'next') a.disabled = activeIdx >= cards.length - 1;
+    });
+  }
+
+  function scrollToCard(i) {
+    const target = cards[i];
+    if (!target) return;
+    target.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+
+  let scrollTimer;
+  track.addEventListener('scroll', () => {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(updateActive, 90);
+  }, { passive: true });
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => scrollToCard(i));
+  });
+
+  arrows.forEach(arrow => {
+    arrow.addEventListener('click', () => {
+      const dir = arrow.dataset.dir === 'next' ? 1 : -1;
+      const target = Math.max(0, Math.min(cards.length - 1, activeIdx + dir));
+      scrollToCard(target);
+    });
+  });
+
+  updateActive();
+  sliderUpdaters.push(updateActive);
+});
+
+window.addEventListener('resize', () => {
+  requestAnimationFrame(() => sliderUpdaters.forEach(fn => fn()));
+}, { passive: true });
 </script>

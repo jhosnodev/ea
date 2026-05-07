@@ -1,5 +1,5 @@
 <div class="brand">
-  <a href="/">
+  <a href="{{ site.baseurl | default: '' }}/">
     AE
   </a>
 
@@ -14,20 +14,20 @@
     <span class="line"></span>
   </label>
 
-  <label class=" nav- element nav-brand"><a href="/" >AE</a></label>
+  <label class=" nav- element nav-brand"><a href="{{ site.baseurl | default: '' }}/" >AE</a></label>
 
   <ul id="menu">
-    <li><a href="/#about" class="nav-links">Sobre mi</a></li>
-    <li><a href="/blog" class="nav-links">blog</a></li>
-    <li><a href="/#contact" class="hireme nav-links">¡Contrátame!</a></li>
+    <li><a href="{{ site.baseurl | default: '' }}/#about" class="nav-links">Sobre mi</a></li>
+    <li><a href="{{ site.baseurl | default: '' }}/blog" class="nav-links">blog</a></li>
+    <li><a href="{{ site.baseurl | default: '' }}/#contact" class="hireme nav-links">¡Contrátame!</a></li>
   </ul>
 
-  <label class="bt"><a href="/portafolio" class="nav-element nav-links portfolio">Portafolio</a></label>
+  <label class="bt"><a href="{{ site.baseurl | default: '' }}/portafolio" class="nav-element nav-links portfolio">Portafolio</a></label>
 </nav>
 
 <nav class="networks">
   <ul>
-    <il><a href="/#contact">
+    <il><a href="{{ site.baseurl | default: '' }}/#contact">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 30" width="33" height="40">
           <defs>
             <style>

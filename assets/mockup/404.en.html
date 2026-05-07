@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#23141D" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="robots" content="noindex" />
+<title>404 — Page out of orbit · Amanda Escalona</title>
+<meta name="description" content="The page you're looking for doesn't exist or moved elsewhere." />
+
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          night:    { DEFAULT: '#23141D', deep: '#1A0F16' },
+          midnight: '#27405E',
+          teal:     '#357376',
+          mist:     {
+            DEFAULT: '#E6FCFA',
+            soft:    'rgba(230, 252, 250, 0.72)',
+            mute:    'rgba(230, 252, 250, 0.45)',
+          },
+          moon:     '#F2EBD3',
+          rule:     'rgba(230, 252, 250, 0.14)',
+        },
+        fontFamily: {
+          display: ['Italiana', 'Cormorant Garamond', 'Georgia', 'serif'],
+          script:  ['"Cormorant Garamond"', 'Georgia', 'serif'],
+          body:    ['"Albert Sans"', 'system-ui', 'sans-serif'],
+        },
+        maxWidth: { wrap: '1280px' },
+        animation: {
+          'rise':    'rise 1.1s cubic-bezier(0.16, 1, 0.3, 1) both',
+          'twinkle': 'twinkle 8s ease-in-out infinite alternate',
+          'orbit-rise': 'orbit-rise 2.5s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards',
+        },
+        keyframes: {
+          'rise': {
+            from: { opacity: '0', transform: 'translateY(28px)' },
+            to:   { opacity: '1', transform: 'translateY(0)' },
+          },
+          'twinkle': {
+            '0%':   { opacity: '0.40' },
+            '50%':  { opacity: '0.65' },
+            '100%': { opacity: '0.45' },
+          },
+          'orbit-rise': {
+            from: { transform: 'translate3d(0, 40px, 0) scale(0.9)', opacity: '0' },
+            to:   { transform: 'translate3d(0, 0, 0)    scale(1)',   opacity: '1' },
+          },
+        },
+      }
+    }
+  }
+</script>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Albert+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+<style>
+  /* Night sky atmosphere (identical to index) */
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 80% 0%, rgba(53,115,118,0.18), transparent 60%),
+      radial-gradient(ellipse 100% 80% at 20% 100%, rgba(39,64,94,0.32), transparent 70%),
+      linear-gradient(180deg, #23141D 0%, #1E1820 50%, #1A0F16 100%);
+  }
+  body::after {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.55;
+    background-image:
+      radial-gradient(1px 1px at 12% 18%, #E6FCFA 100%, transparent),
+      radial-gradient(1px 1px at 22% 62%, #E6FCFA 100%, transparent),
+      radial-gradient(1.5px 1.5px at 38% 8%, #F2EBD3 100%, transparent),
+      radial-gradient(1px 1px at 47% 84%, #E6FCFA 100%, transparent),
+      radial-gradient(1px 1px at 58% 24%, #E6FCFA 100%, transparent),
+      radial-gradient(1.5px 1.5px at 71% 56%, #F2EBD3 100%, transparent),
+      radial-gradient(1px 1px at 81% 12%, #E6FCFA 100%, transparent),
+      radial-gradient(1px 1px at 92% 78%, #E6FCFA 100%, transparent),
+      radial-gradient(1.5px 1.5px at 7% 88%, #F2EBD3 100%, transparent),
+      radial-gradient(1px 1px at 64% 92%, #E6FCFA 100%, transparent);
+    animation: twinkle 8s ease-in-out infinite alternate;
+  }
+  @keyframes twinkle {
+    0%   { opacity: 0.40; }
+    50%  { opacity: 0.65; }
+    100% { opacity: 0.45; }
+  }
+  ::selection { background: #357376; color: #E6FCFA; }
+
+  /* Static moon orb (no phase animation, no scroll) */
+  .orbit {
+    position: fixed;
+    top: 14%; right: 8%;
+    width: clamp(110px, 14vw, 200px);
+    height: clamp(110px, 14vw, 200px);
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 30% 30%,
+        rgba(242,235,211,0.92) 0%,
+        rgba(220,210,180,0.78) 35%,
+        rgba(140,128,98,0.45) 75%,
+        rgba(60,52,40,0.25) 100%);
+    box-shadow:
+      0 0 50px rgba(138, 149, 201, 0.15),
+      0 0 100px rgba(89, 101, 160, 0.08),
+      inset -16px -18px 36px rgba(0, 0, 0, 0.42);
+    mix-blend-mode: screen;
+    opacity: 0.62;
+    z-index: 1;
+    pointer-events: none;
+    animation: orbit-rise 2.5s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+    opacity: 0;
+  }
+  @keyframes orbit-rise {
+    from { transform: translate3d(0, 40px, 0) scale(0.9); opacity: 0; }
+    to   { transform: translate3d(0, 0, 0)    scale(1);   opacity: 0.62; }
+  }
+  @media (max-width: 759px) {
+    .orbit { width: 78px; height: 78px; top: 5.5rem; right: 1rem; opacity: 0.5; }
+    @keyframes orbit-rise {
+      from { transform: translate3d(0, 40px, 0) scale(0.9); opacity: 0; }
+      to   { transform: translate3d(0, 0, 0)    scale(1);   opacity: 0.5; }
+    }
+  }
+
+  /* Reusable rise animation */
+  .rise {
+    opacity: 0;
+    animation: rise 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .rise-1 { animation-delay: 0.1s; }
+  .rise-2 { animation-delay: 0.3s; }
+  .rise-3 { animation-delay: 0.55s; }
+  .rise-4 { animation-delay: 0.8s; }
+  .rise-5 { animation-delay: 1.05s; }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Editorial gradient emphasis (same as index hero) */
+  .gradient-text-em {
+    background: linear-gradient(135deg, #F2EBD3 0%, #E6FCFA 50%, #357376 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Reduce motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    body::after, .orbit { animation: none !important; }
+    .rise { opacity: 1; }
+    .orbit { opacity: 0.62; }
+  }
+
+  :focus-visible {
+    outline: 2px solid #357376;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+</style>
+</head>
+
+<body class="bg-night text-mist font-body antialiased relative overflow-x-hidden min-h-screen">
+
+<!-- Moon orb (decorative) -->
+<div class="orbit" aria-hidden="true"></div>
+
+<!-- ═══════════════════════════════════ NAV ═══════════════════════════════════ -->
+<nav class="fixed top-0 inset-x-0 z-50 px-5 sm:px-8 lg:px-12 py-4 flex items-center justify-between gap-4 backdrop-blur-md bg-gradient-to-b from-night/90 to-transparent" aria-label="Main navigation">
+  <a class="font-display text-base lg:text-lg flex items-center gap-2 flex-shrink-0 text-mist tracking-wide" href="/" aria-label="Home — Amanda Escalona">
+    <span class="inline-block w-2 h-2 rounded-full bg-moon" style="box-shadow: 0 0 12px #F2EBD3, 0 0 24px rgba(242,235,211,0.4);"></span>
+    Amanda Escalona
+  </a>
+  <a class="text-[0.78rem] tracking-[0.16em] uppercase text-mist-soft hover:text-mist transition-colors duration-300" href="/">
+    ← Back to home
+  </a>
+</nav>
+
+<!-- ═══════════════════════════════════ MAIN ═══════════════════════════════════ -->
+<main class="relative z-[2] min-h-screen flex flex-col items-center justify-center text-center px-5 sm:px-8 lg:px-12 py-32 md:py-40 max-w-wrap mx-auto">
+
+  <!-- Section indicator -->
+  <div class="rise rise-1 font-script italic text-teal text-[1.05rem] tracking-wide mb-8 md:mb-10">
+    § Error — Page not found
+  </div>
+
+  <!-- 404 huge — el "0" central en script italic, mismo recurso del hero -->
+  <h1 class="rise rise-2 font-display text-[clamp(7rem,22vw,17rem)] leading-[0.9] tracking-[-0.03em] mb-8 md:mb-10 select-none">
+    4<em class="font-script italic gradient-text-em not-italic mx-1 md:mx-2"><span class="italic">0</span></em>4
+  </h1>
+
+  <!-- Subtitle script italic -->
+  <p class="rise rise-3 font-script italic text-[clamp(1.4rem,2.8vw,2.4rem)] leading-snug text-mist font-light mb-6 max-w-[24ch]">
+    this page is out of orbit.
+  </p>
+
+  <!-- Body -->
+  <p class="rise rise-4 text-mist-soft font-light max-w-[44ch] leading-relaxed mb-10 md:mb-12 text-[clamp(1rem,1.3vw,1.15rem)]">
+    The link you're looking for doesn't exist or moved elsewhere. Let me take you back to the start so we can begin again.
+  </p>
+
+  <!-- CTAs -->
+  <div class="rise rise-5 flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
+    <a class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-mist text-night border border-mist font-medium text-[0.95rem] tracking-wide transition-all duration-300 hover:bg-teal hover:border-teal hover:text-mist hover:-translate-y-0.5 hover:shadow-[0_10px_40px_rgba(53,115,118,0.35)]" href="/">
+      Back to home <span class="font-script italic text-lg">→</span>
+    </a>
+    <a class="text-mist-soft border-b border-transparent transition-all duration-300 hover:text-mist hover:border-teal pb-0.5 text-[0.95rem]" href="/#contacto">
+      or write me directly
+    </a>
+  </div>
+
+  <!-- Ornament -->
+  <div class="rise rise-5 flex items-center justify-center gap-3 mt-16 md:mt-24 text-teal opacity-50">
+    <div class="w-12 md:w-20 h-px bg-gradient-to-r from-transparent to-teal"></div>
+    <span class="font-display text-sm">✦</span>
+    <span class="font-display text-sm">☾</span>
+    <span class="font-display text-sm">✦</span>
+    <div class="w-12 md:w-20 h-px bg-gradient-to-l from-transparent to-teal"></div>
+  </div>
+
+</main>
+
+<!-- ═══════════════════════════════════ FOOTER ═══════════════════════════════════ -->
+<footer class="border-t border-rule py-7 text-mist-mute text-[0.78rem] tracking-wide relative z-[2]">
+  <div class="max-w-wrap mx-auto px-5 sm:px-8 lg:px-12 text-center">
+    <div class="font-script italic text-mist-soft text-base">© MMXXVI · Amanda Escalona ☾</div>
+  </div>
+</footer>
+
+</body>
+</html>
